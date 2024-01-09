@@ -12,7 +12,7 @@
 }
 
 [data-contexto="descanso-curto"] {
-    --main-bg-color: linear-gradient(180deg, #0F725C 0%, #041832 48.44%, #01080E 100%);
+    --main-bg-color: linear-gradient(180deg, #8B4513 0%, #D2B48C 48.44%, #01080E 100%);
 }
 
 [data-contexto="descanso-longo"] {
@@ -250,4 +250,13 @@ h1, h2, h3, h4, h5, h6 {
     .app__card-timer {
         font-size: 6rem;
     }
+}
+
+
+.descrição_pomodoro{
+
+    color: #fff;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Courier New', Courier, monospace;
 }
