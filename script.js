@@ -18,7 +18,7 @@ musicaFocoInput.addEventListener('change', () => {
 
 })
 function alterarContexto(contexto) {
-    botoes.letch(function (contexto) {
+    botoes.forEach(function (contexto) {
         contexto.classList.remove('active')
     })
     html.setAttribute('data-contexto', contexto)
