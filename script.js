@@ -8,8 +8,7 @@ const botoes = document.querySelectorAll('.app__card-button')
 const musicaFocoInput = document.querySelector('#alternar-musica')
 const startPauseBt = document.querySelector('#start-pause')
 const musica = new Audio('/sons/good-night.mp3')
-const playBt = new Audio('/sons/play.wav')
-const pauseBt = new Audio('/sons/pause.mp3')
+const playPauseBt = new Audio('/sons/play.wav')
 const audioFinalizado = new Audio('/sons/beep.mp3')
 
 let tempoDecorridoEmSegundos = 5
@@ -90,11 +89,11 @@ startPauseBt.addEventListener('click', iniciarOuPausar)
 
 function iniciarOuPausar() {
     if (intervaloId) {
-        pauseBt.play();
+        playPauseBt.play();
         zerar()
         return
     }
-    playBt.play();
+    playPauseBt.play();
     intervaloId = setInterval(contagemRegressiva, 1000)
 }
 
