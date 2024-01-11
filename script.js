@@ -6,8 +6,17 @@ const banner = document.querySelector('.app__image')
 const titulo = document.querySelector('.app__title')
 const botoes = document.querySelectorAll('.app__card-button')
 const musicaFocoInput = document.querySelector('#alternar-musica')
+const startPauseBt = document.querySelector('#start-pause')
 const musica = new Audio('/sons/good-night.mp3')
+const playBt = new Audio('/sons/play.wav')
+const pauseBt = new Audio('/sons/pause.mp3')
+const audioFinalizado = new Audio('/sons/beep.mp3')
+
+let tempoDecorridoEmSegundos = 5
+let intervaloId = null
+
 musica.loop = true
+
 
 musicaFocoInput.addEventListener('change', () => {
     if (musica.paused) {
@@ -16,7 +25,9 @@ musicaFocoInput.addEventListener('change', () => {
         musica.pause()
     }
 
+
 })
+
 function alterarContexto(contexto) {
     botoes.forEach(function (contexto) {
         contexto.classList.remove('active')
@@ -61,7 +72,33 @@ longoBt.addEventListener('click', () => {
     longoBt.classList.add('active')
 })
 
+const contagemRegressiva = () => {
+    if(tempoDecorridoEmSegundos <= 0){
+        audioFinalizado.play()
+        alert('Tempo finalizado!')
+        zerar()
+        return
+    }
+    tempoDecorridoEmSegundos -= 1
+    console.log('Tempo: ' + tempoDecorridoEmSegundos)
+    console.log('Id: ' + intervaloId)
+}
 
 
+startPauseBt.addEventListener('click', iniciarOuPausar)
 
 
+function iniciarOuPausar() {
+    if (intervaloId) {
+        pauseBt.play();
+        zerar()
+        return
+    }
+    playBt.play();
+    intervaloId = setInterval(contagemRegressiva, 1000)
+}
+
+function zerar() {
+    clearInterval(intervaloId)
+    intervaloId = null
+}
