@@ -14,7 +14,7 @@ const iniciarOuPausarBt = document.querySelector('#start-pause span')
 const trocarImagemPlayPause = document.querySelector('.app__card-primary-butto-icon')
 const tempoNaTela = document.querySelector('#timer')
 
-let tempoDecorridoEmSegundos = 5 // declaração da variável para iniciar o contador
+let tempoDecorridoEmSegundos = 1500 // declaração da variável para iniciar o contador
 let intervaloId = null
 
 musica.loop = true
@@ -121,8 +121,9 @@ function zerar() {
 }
 
 function mostrarTempo() {
-    const tempo = tempoDecorridoEmSegundos
-    tempoNaTela.innerHTML = `${ tempo }`
+    const tempo = new Date(tempoDecorridoEmSegundos * 1000)
+    const tempoFormatado = tempo.tolocaletimeString('pt-Br', {minute: '2-digit', second: '2-digit'})
+    tempoNaTela.innerHTML = `${tempoFormatado}`
 }
 
 mostrarTempo()
