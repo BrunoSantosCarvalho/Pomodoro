@@ -48,7 +48,7 @@ function alterarContexto(contexto) {
         contexto.classList.remove('active')
     })
     html.setAttribute('data-contexto', contexto)
-    banner.setAttribute('src', `/imagens/${contexto}.png`)
+    // banner.setAttribute('src', `/imagens/${contexto}.png`)
     switch (contexto) {
         case 'foco':
             titulo.innerHTML = `Otimize sua produtividade,<br>
@@ -75,16 +75,23 @@ function alterarContexto(contexto) {
 focoBt.addEventListener('click', () => {
     alterarContexto('foco')
     focoBt.classList.add('active')
+    tempoDecorridoEmSegundos = 1500
+    mostrarTempo()
 })
 
 curtoBt.addEventListener('click', () => {
     alterarContexto('descanso-curto')
     curtoBt.classList.add('active')
+    tempoDecorridoEmSegundos = 300
+    mostrarTempo()
 })
 
 longoBt.addEventListener('click', () => {
     alterarContexto('descanso-longo')
     longoBt.classList.add('active')
+    tempoDecorridoEmSegundos = 900
+    mostrarTempo()
+
 })
 
 const contagemRegressiva = () => {
@@ -111,18 +118,21 @@ function iniciarOuPausar() {
     playPauseBt.play();
     intervaloId = setInterval(contagemRegressiva, 1000)
     iniciarOuPausarBt.textContent = "Pausar"
+    trocarImagemPlayPause.src = ('src', `/imagens/pause.png`)
+
 }
 
 function zerar() {
     clearInterval(intervaloId)
     iniciarOuPausarBt.textContent = "Começar"
     intervaloId = null
-    // location.reload()
+    trocarImagemPlayPause.src = ('src', `/imagens/play_arrow.png`)
+
 }
 
 function mostrarTempo() {
     const tempo = new Date(tempoDecorridoEmSegundos * 1000)
-    const tempoFormatado = tempo.tolocaletimeString('pt-Br', {minute: '2-digit', second: '2-digit'})
+    const tempoFormatado = tempo.toLocaleTimeString('pt-Br', { minute: '2-digit', second: '2-digit' })
     tempoNaTela.innerHTML = `${tempoFormatado}`
 }
 
