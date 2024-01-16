@@ -12,11 +12,11 @@
 }
 
 [data-contexto="descanso-curto"] {
-    --main-bg-color: linear-gradient(180deg, #004d00 0%, #006600 48.44%, #008000 100%);
+    --main-bg-color: linear-gradient(180deg, #001f3f 0%, #003366 48.44%, #004080 100%);
 }
 
 [data-contexto="descanso-longo"] {
-    --main-bg-color: linear-gradient(180deg, #000000 0%, #000000 48.44%, #000000 100%);
+    --main-bg-color: linear-gradient(180deg, #001f3f 0%, #003366 48.44%, #004080 100%);
 }
 
 * {
